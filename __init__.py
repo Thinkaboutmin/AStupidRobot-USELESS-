@@ -90,10 +90,10 @@ class Robot:
 def main():
     pass
 
-
+# Test code
 robot = Robot()
 robot.robot_movement("UP 14 AFK and down down show")
 
-
+# Maybe one day the actual running code
 if __name__ == "__main__":
     main()
