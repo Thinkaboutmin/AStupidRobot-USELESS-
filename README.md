@@ -7,4 +7,4 @@ It's really just a program with no use other than learning.
 
 Code made with the glamorous IDE Pycharm
 
-![alt text](https://raw.githubusercontent.com/Thinkaboutmin/AStupidRobot-USELESS-/tree/master/Robot_Image.png)
+![alt text](https://github.com/Thinkaboutmin/AStupidRobot-USELESS-/blob/master/Robot_Image.png)
