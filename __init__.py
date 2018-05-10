@@ -30,7 +30,6 @@ class Robot:
         self.place = {"X": 20, "Y": 20}  # Why I used dict? DUNNOO # TODO a way to print..
         self.robot_place = {"UP": 0, "DOWN": 0, "LEFT": 0, "RIGHT": 0}  # NEITHER HERE!!!
         self.movement = None
-        self.place.
 
     def __str__(self):
         # Here comes the nightmare return
