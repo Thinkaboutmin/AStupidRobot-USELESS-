@@ -6,3 +6,5 @@ This program is made by a total noobie, don't expect some really cool code style
 It's really just a program with no use other than learning.
 
 Code made with the glamorous IDE Pycharm
+
+![alt text](https://raw.githubusercontent.com/Thinkaboutmin/AStupidRobot-USELESS-/tree/master/Robot_Image.png)
