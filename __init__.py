@@ -6,12 +6,12 @@
 # and
 # Made with Pycharm to skip some silly things
 
-####################################### IMPORTS ###############################################
+# ----------------------------------------- IMPORTS -----------------------------------------
 
 import sys
 import re
 import warnings as warner
-import pprint
+# import pprint
 
 # ^ Still thinking about it
 
@@ -21,7 +21,7 @@ import pprint
 # TODO the entire program
 
 
-#################################### CLASS ######################################################
+# ------------------------------------------ CLASS -------------------------------------------
 
 class Robot:
     def __init__(self):
@@ -71,10 +71,10 @@ class Robot:
             print(self)
 
     def _robot_place(self):
+        pass
         # TODO
-
-        for i in self.place["Y"]:
-            pprint.pprint(("A" * 4)*self.place["X"])
+        # for i in self.place["Y"]:
+        #     pprint.pprint(("A" * 4)*self.place["X"])
 
     def _robot_translate(self):
 
@@ -105,12 +105,12 @@ class Robot:
 
     def _robot_process(self):
         # TODO or Delete, dunno why I even created this method
-        robot_gps = None
-
+        pass
 
     # ANOTHER WAY ((DOWN |UP )[1-9]* ?(SHOW|OVER)?) Basically a tip
 
-########################################### FUNCTION ###########################################
+# ----------------------------------------- FUNCTION -------------------------------------------
+
 
 def main():
     robot = Robot()  # No need to declare anything in __init__, BTW this is an instance
@@ -119,7 +119,8 @@ def main():
         robot.robot_movement(input_)
         continue  # Explicitly for readability, and understand that this loop continue until the user closes it
 
-######################################### Trigger ###############################################
+# ---------------------------------------- Trigger --------------------------------------------
+
 
 if __name__ == "__main__":
     main()
