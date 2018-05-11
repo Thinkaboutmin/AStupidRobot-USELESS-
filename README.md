@@ -17,9 +17,9 @@ Code made with the glamorous IDE Pycharm
 
 This program is, idk why I dare to say this, designed for python 3.6. It might not work
 on others versions of python.
-'''
+
 Not like somebody will really test it other than me :P
-'''
+
 #####Thinkaboutmin
 #####Python 3.6
 #####Such dumb robot
