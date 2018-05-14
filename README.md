@@ -23,4 +23,4 @@ Not like somebody will really test it other than me :P
 ##### Thinkaboutmin
 ##### Python 3.6
 ##### Such dumb robot
-##### Incomplete
+##### Complete - Few things to perfection dumbness

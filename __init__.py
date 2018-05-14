@@ -6,27 +6,28 @@
 # and
 # Made with Pycharm to skip some silly things
 
+
+# Advise: This program uses a lot of things considered poor. Please understand that I never worked with
+# programs in the way I did with this one, and that I'm really dumb.
+# Feel free to yell mentally on how X thing is done in such way.
+
 # ----------------------------------------- IMPORTS -----------------------------------------
 
 import sys
 import re
 import warnings as warner
 
-
-# TODO Modularity for fun? Never will be done though
-
-# TODO the entire program
-
-
 # ------------------------------------------ CLASS -------------------------------------------
+
 
 class Robot:
     def __init__(self):
         # Declare everything in the __init__ method, even if it's not used now, PEP8 strictly?
 
-        self.place = (20, 20)
+        self.place = (20, 20)  # X and Y
         self.robot_place = {"UP": 0, "DOWN": 0, "LEFT": 0, "RIGHT": 0}  # NEITHER HERE!!!
         self.movement = None
+        self.robot_axis = None
 
     def __str__(self):
         # Here comes the nightmare return
@@ -70,26 +71,27 @@ class Robot:
             print(self)
 
     def _robot_place(self):
-        x = 0
-        axis = [self.robot_place["UP"] - self.robot_place["DOWN"], self.robot_place["LEFT"] - self.robot_place["RIGHT"]]
         self._robot_process()
-        print("NOTHING YET")
-        print(self.robot_place)
-        # TODO
 
-        # for i in range(1, self.place[1] + 1):
-        #     x += 1
-        #     if i == axis[0]:
-        #         print(("#" * 4) * self.place[0] - 70)
-        #     else:
-        #         print(("A" * 4)*self.place[0])
+        self.robot_axis = (self.robot_place["DOWN"] - self.robot_place["UP"],
+                           self.robot_place["LEFT"] - self.robot_place["RIGHT"])
+
+        placebo = ["A" for _ in range(self.place[1])]
+
+        for i in range(0, self.place[1]):
+            if i == self.robot_axis[0]:
+                placebo[self.robot_axis[1]] = "#"
+                print("".join(placebo))
+                placebo[self.robot_axis[1]] = "A"  # Stupid way of recovering the value
+            else:
+                print("".join(placebo))
 
     def _robot_translate(self):
 
         # The following code verify for the correct pattern and ignore some commands that were given wrong
         # or out of the order
 
-        robotic_finder = re.compile(r"(SHOW|OVER|{}|{}|{}|{}) ?([1-9]*)? ?(SHOW|OVER)?"
+        robotic_finder = re.compile(r"(SHOW|OVER|{}|{}|{}|{})\s?(\d*)\s?(SHOW|OVER)?"
                                     .format(*self.robot_place.keys()))
 
         self.movement: str = robotic_finder.findall(self.movement)  # findall method shows all groups
@@ -97,27 +99,41 @@ class Robot:
     def _robot_move(self):
         for _, typo in enumerate(self.movement):  # reason for _, Id of the value not necessary. GONE TO THE VOID!
             if typo[0] == "OVER":
+                bye()
                 sys.exit(1)
             elif typo[0] == "SHOW":
                 self._robot_place()
+            elif typo[1]:
+                self.robot_place[typo[0]] += int(typo[1])
             elif typo[1] and typo[2] == "SHOW":
                 self.robot_place[typo[0]] += int(typo[1])
                 self._robot_place()
             elif typo[1] and typo[2] == "OVER":
                 self.robot_place[typo[0]] += int(typo[1])
+                bye()
                 sys.exit(1)
             else:
-                print(typo)
                 self.robot_place[typo[0]] += 1
+                if typo[2] == "SHOW":
+                    self._robot_place()
+                elif typo[2] == "OVER":
+                    bye()
+                    sys.exit(1)
 
     def _robot_process(self):
-        # Verify if the robot passes the limit of the space
-
+        # Verify if the robot passes the limit of the space and returns it in a suitable one
         for i in self.robot_place.keys():
-            while self.robot_place[i] > 20:
-                self.robot_place[i] -= 20
-
-    # ANOTHER WAY ((DOWN |UP )[1-9]* ?(SHOW|OVER)?) Basically a tip
+            if i == "UP" or "DOWN":
+                while self.robot_place[i] > self.place[0] - 1:
+                    self.robot_place[i] %= self.place[0]
+            else:
+                while self.robot_place[i] > self.place[1] - 1:
+                    self.robot_place[i] %= self.place[1]
+                    print("OI")
+        if self.robot_place["UP"] > self.robot_place["DOWN"]:
+            self.robot_place["UP"] = -(self.place[0] - self.robot_place["UP"])
+        else:
+            pass
 
 # ----------------------------------------- FUNCTION -------------------------------------------
 
@@ -129,7 +145,10 @@ def main():
         robot.robot_movement(input_)
         continue  # Explicitly for readability, and understand that this loop continue until the user closes it
 
+def bye():
+    print("Bye, bye. Have a nice day")
 # ---------------------------------------- Trigger --------------------------------------------
+# NIGHTMARE STARTS
 
 
 if __name__ == "__main__":
