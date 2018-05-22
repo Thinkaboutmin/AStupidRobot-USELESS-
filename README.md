@@ -24,3 +24,12 @@ Not like somebody will really test it other than me :P
 ##### Python 3.6
 ##### Such dumb robot
 ##### Complete - Few things to perfection dumbness
+
+###### TODO
+```
+Sleep command
+...
+...
+...
+More DUMBNESS and FUTILITY!
+```
