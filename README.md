@@ -28,8 +28,8 @@ Not like somebody will really test it other than me :P
 ###### TODO
 ```
 Sleep command
-...
-...
-...
+???
+???
+???
 More DUMBNESS and FUTILITY!
 ```
